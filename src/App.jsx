@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 
 const C = {
-  blue: "#0047FF", dark: "#080C14", card: "rgba(255,255,255,0.025)",
-  border: "rgba(255,255,255,0.07)", accent: "#00E5FF", muted: "#8BA8C8",
-  dim: "#4A6080", dimmer: "#2A3850", dimmest: "#1A2840",
+  blue: "#7C3AED",           // Brand Purple
+  dark: "#0D0E1A",           // Dark Navy Background
+  card: "rgba(255,255,255,0.04)",
+  border: "rgba(255,255,255,0.08)",
+  accent: "#A78BFA",         // Light Purple Accent
+  muted: "#94A3B8",
+  dim: "#4A5568",
+  dimmer: "#2D3748",
+  dimmest: "#1A202C",
 };
-
-function encodeAnswers(a) { try { return btoa(JSON.stringify(a)); } catch { return ""; } }
-function decodeAnswers(s) { try { return JSON.parse(atob(s)); } catch { return null; } }
-function getShareUrl(answers, result) {
-  const base = window.location.href.split("?")[0].split("#")[0];
-  return `${base}?${new URLSearchParams({ r: encodeAnswers(answers), fw: result.framework, meth: encodeURIComponent(result.methodology) })}`;
-}
 function readUrlState() {
   try {
     const p = new URLSearchParams(window.location.search);
@@ -217,7 +216,7 @@ function OptionBtn({ option, selected, onClick, index }) {
       gap: 16, textAlign: "left", transition: "all 0.2s",
       color: selected ? "#fff" : C.muted, marginBottom: 10, position: "relative", overflow: "hidden",
     }}>
-      {selected && <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg,rgba(0,71,255,0.08),rgba(0,229,255,0.04))", pointerEvents: "none" }} />}
+      {selected && <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg,rgba(124,58,237,0.08),rgba(167,139,250,0.04))", pointerEvents: "none" }} />}
       <div style={{
         width: 28, height: 28, borderRadius: "50%",
         border: `1.5px solid ${selected ? C.accent : "rgba(255,255,255,0.15)"}`,
@@ -257,7 +256,7 @@ function EmailGate({ framework, methodology, onSubmit }) {
   return (
     <div>
       <div style={{ textAlign: "center", marginBottom: 28 }}>
-        <div style={{ width: 52, height: 52, borderRadius: "50%", margin: "0 auto 18px", background: "rgba(0,71,255,0.1)", border: `1px solid rgba(0,71,255,0.3)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>🔐</div>
+        <div style={{ width: 52, height: 52, borderRadius: "50%", margin: "0 auto 18px", background: "rgba(124,58,237,0.1)", border: "1px solid rgba(124,58,237,0.3)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>🔐</div>
         <h2 style={{ fontSize: 21, fontWeight: 700, color: "#fff", margin: "0 0 8px" }}>Your results are ready</h2>
         <p style={{ fontSize: 13, color: C.muted, margin: 0, lineHeight: 1.6 }}>
           Unlock your <strong style={{ color: "#fff" }}>{framework} + {methodology}</strong> recommendation.
@@ -279,7 +278,7 @@ function EmailGate({ framework, methodology, onSubmit }) {
       <button onClick={handleSubmit} style={{
         width: "100%", padding: "15px", background: C.blue,
         border: "none", borderRadius: 8, fontSize: 15, fontWeight: 700, color: "#fff",
-        cursor: "pointer", fontFamily: "inherit", boxShadow: "0 0 32px rgba(0,71,255,0.3)",
+        cursor: "pointer", fontFamily: "inherit", boxShadow: "0 0 32px rgba(124,58,237,0.3)",
       }}>
         Unlock My Results →
       </button>
@@ -293,7 +292,7 @@ function EmailGate({ framework, methodology, onSubmit }) {
 function ResultSection({ label, isBlue, title, tagline, description, fits, voxintel }) {
   return (
     <div style={{
-      background: isBlue ? "rgba(0,71,255,0.06)" : "rgba(0,229,255,0.04)",
+      background: isBlue ? "rgba(124,58,237,0.06)" : "rgba(167,139,250,0.04)",
       border: `1px solid ${isBlue ? "rgba(0,71,255,0.2)" : "rgba(0,229,255,0.15)"}`,
       borderRadius: 14, padding: 24, marginBottom: 16,
     }}>
